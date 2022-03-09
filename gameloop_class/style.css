@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: whitesmoke;
+  background-color: #112;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+canvas {
+  background-color: blanchedalmond;
+}
