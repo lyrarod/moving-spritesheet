@@ -6,10 +6,8 @@ export default class Sprite {
     this.color = color;
   }
 
-  render(ctx) {
+  render = (ctx) => {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.posX, this.posY, this.size, this.size);
-  }
+  };
 }
-
-// export const player = new Sprite(0, 0, 30, "steelblue");

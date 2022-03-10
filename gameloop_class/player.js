@@ -8,7 +8,7 @@ class Player extends Sprite {
     this.velocity = 2;
   }
 
-  move(canvas) {
+  move = (canvas) => {
     if (keypress.key.a) {
       this.posX -= this.velocity;
       if (this.posX + this.size < 0) this.posX = canvas.width;
@@ -26,7 +26,7 @@ class Player extends Sprite {
       this.posY += this.velocity;
       if (this.posY > canvas.height) this.posY = -this.size;
     }
-  }
+  };
 
   init = (canvas) => {
     this.posX = canvas.width / 2 - this.size / 2;

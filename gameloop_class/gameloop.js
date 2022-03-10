@@ -1,36 +1,45 @@
 class Gameloop {
   constructor() {
+    this.canvas = null;
+    this.ctx = null;
+    this.animate = null;
+
     this.canvasEl = document.createElement("canvas");
     document.body.append(this.canvasEl);
+  }
 
+  loadCanvas = () => {
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
 
-    this.CANVAS_WIDTH = this.canvas.width = 500;
-    this.CANVAS_HEIGHT = this.canvas.height = 300;
-  }
+    this.canvas.width = 500;
+    this.canvas.height = 300;
+  };
+  clearCanvas = () => {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  };
 
-  render() {
-    // console.log("gameloop render...");
-  }
-  update() {
+  update = () => {
     // console.log("gameloop update...");
-  }
-  init() {
+  };
+  render = () => {
+    // console.log("gameloop render...");
+  };
+  init = () => {
     // console.log("gameloop init...");
-  }
-  clearCanvas() {
-    this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-  }
-  loop() {
-    this.render();
+  };
+
+  loop = () => {
     this.update();
-    requestAnimationFrame(() => this.loop());
-  }
-  start() {
+    this.render();
+    this.animate = requestAnimationFrame(this.loop);
+  };
+
+  start = () => {
+    this.loadCanvas();
     this.init();
     this.loop();
-  }
+  };
 }
 
 export const gameloop = new Gameloop();
