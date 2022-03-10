@@ -3,7 +3,6 @@ export default class Sprite {
     this.posX = x;
     this.posY = y;
     this.size = size;
-    this.velocity = 2;
     this.color = color;
   }
 

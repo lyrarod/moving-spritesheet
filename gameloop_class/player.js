@@ -1,31 +1,30 @@
 import Sprite from "./sprite.js";
+import { keypress } from "./keypress.js";
 
 class Player extends Sprite {
   constructor(x, y, size, color) {
     super(x, y, size, color);
+
+    this.velocity = 2;
   }
 
-  update(keypress, c) {
-    this.move(keypress, c);
-  }
-
-  move(keypress, c) {
-    if (keypress.a) {
+  move(canvas) {
+    if (keypress.key.a) {
       this.posX -= this.velocity;
-      if (this.posX + this.size < 0) this.posX = c.width;
+      if (this.posX + this.size < 0) this.posX = canvas.width;
     }
-    if (keypress.d) {
+    if (keypress.key.d) {
       this.posX += this.velocity;
-      if (this.posX > c.width) this.posX = -this.size;
+      if (this.posX > canvas.width) this.posX = -this.size;
     }
 
-    if (keypress.w) {
+    if (keypress.key.w) {
       this.posY -= this.velocity;
-      if (this.posY + this.size < 0) this.posY = c.height;
+      if (this.posY + this.size < 0) this.posY = canvas.height;
     }
-    if (keypress.s) {
+    if (keypress.key.s) {
       this.posY += this.velocity;
-      if (this.posY > c.height) this.posY = -this.size;
+      if (this.posY > canvas.height) this.posY = -this.size;
     }
   }
 

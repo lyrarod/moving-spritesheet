@@ -19,13 +19,14 @@ class Gameloop {
   init() {
     // console.log("gameloop init...");
   }
-
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
+  }
   loop() {
     this.render();
     this.update();
     requestAnimationFrame(() => this.loop());
   }
-
   start() {
     this.init();
     this.loop();
