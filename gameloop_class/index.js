@@ -5,16 +5,14 @@ import Enemy, { enemy } from "./enemy.js";
 addEventListener("load", () => gameloop.start());
 
 gameloop.init = () => {
-  player.init(gameloop.canvas);
+  player.init();
 };
 
 gameloop.update = () => {
-  player.move(gameloop.canvas);
+  player.move();
 };
 
 gameloop.render = () => {
-  gameloop.clearCanvas();
-  player.render(gameloop.ctx);
-  enemy.add(new Enemy(240, 140, 20, "crimson"));
-  enemy.arrayOfEnemies.map((e) => e.render(gameloop.ctx));
+  player.render();
+  enemy.arrayOfEnemies.map((e) => e.render());
 };
