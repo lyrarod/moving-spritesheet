@@ -1,18 +1,18 @@
 import { gameloop } from "./gameloop.js";
 import { player } from "./player.js";
-import Enemy, { enemy } from "./enemy.js";
+import { enemy } from "./enemy.js";
 
-addEventListener("load", () => gameloop.start());
+window.addEventListener("load", () => gameloop.start());
 
 gameloop.init = () => {
-  player.init();
+  player.arrayOfPlayers[player.arrayOfPlayers.length - 1].init();
 };
 
 gameloop.update = () => {
-  player.move();
+  player.arrayOfPlayers.map((p) => p.move());
 };
 
 gameloop.render = () => {
-  player.render();
+  player.arrayOfPlayers.map((p) => p.render());
   enemy.arrayOfEnemies.map((e) => e.render());
 };

@@ -1,8 +1,8 @@
 import Sprite from "./sprite.js";
 
 export default class Enemy extends Sprite {
-  constructor(x, y, width, height, color) {
-    super(x, y, width, height, color);
+  constructor(options) {
+    super(options);
 
     this.arrayOfEnemies = [];
   }
@@ -19,14 +19,22 @@ Array(numberOfEnemies)
   .fill()
   .map((_, i) =>
     enemy.add(
-      new Enemy(
-        30 + 46 * i, // x
-        20, // y
-        20, // width
-        20, // height
-        colors[Math.floor(Math.random() * colors.length)] // color
-      )
+      new Enemy({
+        x: 30 + 46 * i,
+        y: 20,
+        width: 20,
+        height: 20,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      })
     )
   );
 
-enemy.add(new Enemy(240, 140, 20, 20, "crimson"));
+enemy.add(
+  new Enemy({
+    x: 230,
+    y: 140,
+    width: 40,
+    height: 20,
+    color: "crimson",
+  })
+);

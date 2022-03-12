@@ -1,54 +1,49 @@
 import { ctx } from "./gameloop.js";
 
 export default class Sprite {
-  constructor(x, y, width, height, color, sprite) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.color = color;
-    this.sprite = sprite;
-    this.cycle_loop = [0, 1, 2, 3];
-    this.face_down = 0;
-    this.face_left = 1;
-    this.face_right = 2;
-    this.face_up = 3;
-    this.frame_limit = 14;
-    this.currentDirection = null;
-    this.currentLoopIndex = 0;
-    this.frame_count = 0;
+  constructor(options) {
+    this.options = options;
   }
 
   render = () => {
-    if (!this.sprite) {
+    if (!this.options.sprite) {
       this.drawRect();
       return;
     }
 
     this.drawFrame(
-      this.cycle_loop[this.currentLoopIndex],
-      this.currentDirection,
-      this.x,
-      this.y
+      this.options.cycle_loop[this.options.currentLoopIndex],
+      this.options.column + this.options.currentDirection,
+      this.options.x,
+      this.options.y
     );
   };
 
   drawFrame = (frameX, frameY, canvasX, canvasY) => {
-    ctx.drawImage(
-      this.sprite,
-      frameX * this.width,
-      frameY * this.height,
-      this.width,
-      this.height,
-      canvasX,
-      canvasY,
-      this.width,
-      this.height
-    );
+    if (this.options.sprite) {
+      ctx.drawImage(
+        this.options.sprite,
+        frameX * this.options.width,
+        frameY * this.options.height,
+        this.options.width,
+        this.options.height,
+        canvasX,
+        canvasY,
+        this.options.width * this.options.scale,
+        this.options.height * this.options.scale
+      );
+    }
   };
 
   drawRect = () => {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (this.options.color) {
+      ctx.fillStyle = this.options.color;
+      ctx.fillRect(
+        this.options.x,
+        this.options.y,
+        this.options.width,
+        this.options.height
+      );
+    }
   };
 }

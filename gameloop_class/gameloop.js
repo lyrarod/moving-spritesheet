@@ -5,6 +5,7 @@ export default class Gameloop {
 
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
+    this.ctx.imageSmoothingEnabled = false;
 
     this.canvas.width = 500;
     this.canvas.height = 300;
