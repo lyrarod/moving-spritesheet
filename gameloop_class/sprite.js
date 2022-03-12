@@ -3,6 +3,10 @@ import { ctx } from "./gameloop.js";
 export default class Sprite {
   constructor(options) {
     this.options = options;
+
+    this.frame_count = 0;
+    this.currentLoopIndex = 0;
+    this.currentDirection = null;
   }
 
   render = () => {
@@ -12,8 +16,8 @@ export default class Sprite {
     }
 
     this.drawFrame(
-      this.options.cycle_loop[this.options.currentLoopIndex],
-      this.options.column + this.options.currentDirection,
+      this.options.cycle_loop[this.currentLoopIndex],
+      this.options.rowFrame + this.currentDirection,
       this.options.x,
       this.options.y
     );

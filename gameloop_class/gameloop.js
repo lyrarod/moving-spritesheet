@@ -7,10 +7,15 @@ export default class Gameloop {
     this.ctx = this.canvas.getContext("2d");
     this.ctx.imageSmoothingEnabled = false;
 
-    this.canvas.width = 500;
-    this.canvas.height = 300;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
 
     this.animate = null;
+
+    window.addEventListener("resize", () => {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    });
   }
 
   update = () => {

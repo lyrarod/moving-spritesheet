@@ -20,8 +20,8 @@ Array(numberOfEnemies)
   .map((_, i) =>
     enemy.add(
       new Enemy({
-        x: 30 + 46 * i,
-        y: 20,
+        x: 10 + 50 * i,
+        y: 10,
         width: 20,
         height: 20,
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -31,8 +31,8 @@ Array(numberOfEnemies)
 
 enemy.add(
   new Enemy({
-    x: 230,
-    y: 140,
+    x: 200,
+    y: 200,
     width: 40,
     height: 20,
     color: "crimson",
