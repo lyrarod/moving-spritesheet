@@ -1,12 +1,11 @@
 import { ctx } from "./gameloop.js";
 
 export default class Sprite {
-  constructor(x, y, width, height, color, sprite) {
+  constructor(x, y, width, height, sprite) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
-    this.color = color;
     this.sprite = sprite;
     this.frameX = 0;
     this.frameY = 0;
@@ -22,7 +21,7 @@ export default class Sprite {
       return;
     }
 
-    this.drawSprite();
+    this.sprite.addEventListener("load", this.drawSprite());
   };
 
   drawSprite = () => {
@@ -40,7 +39,7 @@ export default class Sprite {
   };
 
   drawRect = () => {
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = "crimson";
     ctx.fillRect(this.x, this.y, this.width, this.height);
   };
 }

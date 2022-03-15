@@ -1,13 +1,12 @@
 import Sprite from "./sprite.js";
 import { keypress } from "./keypress.js";
-import { gameloop, CANVAS_HEIGHT, CANVAS_WIDTH } from "./gameloop.js";
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from "./gameloop.js";
 
 export default class Player extends Sprite {
   constructor(x, y, width, height, sprite) {
     super(x, y, width, height, sprite);
 
     this.speed = 1.4;
-    this.sprite = sprite;
   }
 
   update = () => {
@@ -99,7 +98,7 @@ export default class Player extends Sprite {
   };
 }
 
-const imgPlayer = new Image();
-imgPlayer.src = "./assets/chewie.png";
+const playerSprite = new Image();
+playerSprite.src = "assets/chewie.png";
 
-export const player = new Player(null, null, 40, 72, imgPlayer);
+export const player = new Player(null, null, 40, 72, playerSprite);
