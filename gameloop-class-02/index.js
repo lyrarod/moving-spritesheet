@@ -1,7 +1,7 @@
 import { gameloop } from "./gameloop.js";
 import { player } from "./player.js";
 
-window.addEventListener("load", () => gameloop.start());
+window.addEventListener("load", gameloop.start);
 
 gameloop.init = () => {
   player.init();

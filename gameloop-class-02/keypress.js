@@ -7,7 +7,7 @@ export default class Keypress {
       // console.log(this.key);
     });
     window.addEventListener("keyup", ({ code }) => {
-      delete this.key[code];
+      this.key[code] = false; // delete this.key[code];
       // console.log(this.key);
     });
   }

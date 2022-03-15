@@ -1,12 +1,12 @@
 import Sprite from "./sprite.js";
 import { keypress } from "./keypress.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from "./gameloop.js";
+import { gameloop, CANVAS_HEIGHT, CANVAS_WIDTH } from "./gameloop.js";
 
 export default class Player extends Sprite {
-  constructor(x, y, width, height, color, sprite) {
-    super(x, y, width, height, color, sprite);
+  constructor(x, y, width, height, sprite) {
+    super(x, y, width, height, sprite);
 
-    this.speed = 1;
+    this.speed = 1.4;
     this.sprite = sprite;
   }
 
@@ -25,6 +25,7 @@ export default class Player extends Sprite {
       // if (this.x >= CANVAS_WIDTH) this.x = -this.width;
       if (this.x + this.width >= CANVAS_WIDTH) {
         this.x = CANVAS_WIDTH - this.width;
+        hasMoved = false;
       }
     }
     if (keypress.key.KeyA && !keypress.key.KeyD) {
@@ -34,6 +35,7 @@ export default class Player extends Sprite {
       // if (this.x + this.width <= 0) this.x = CANVAS_WIDTH;
       if (this.x <= 0) {
         this.x = 0;
+        hasMoved = false;
       }
     }
 
@@ -45,11 +47,14 @@ export default class Player extends Sprite {
       // if (this.y + this.height <= 0) this.y = CANVAS_HEIGHT;
       if (this.y <= 50) {
         this.y = 50;
+        hasMoved = false;
 
         if (keypress.key.KeyA) {
           this.frameY = 1; // face left
+          hasMoved = true;
         } else if (keypress.key.KeyD) {
           this.frameY = 2; // face right
+          hasMoved = true;
         }
       }
     }
@@ -60,11 +65,14 @@ export default class Player extends Sprite {
       // if (this.y >= CANVAS_HEIGHT) this.y = -this.height;
       if (this.y + this.height >= CANVAS_HEIGHT) {
         this.y = CANVAS_HEIGHT - this.height;
+        hasMoved = false;
 
         if (keypress.key.KeyA) {
           this.frameY = 1; // face left
+          hasMoved = true;
         } else if (keypress.key.KeyD) {
           this.frameY = 2; // face right
+          hasMoved = true;
         }
       }
     }
@@ -91,12 +99,7 @@ export default class Player extends Sprite {
   };
 }
 
-let player;
-
-let imgPlayer = new Image();
+const imgPlayer = new Image();
 imgPlayer.src = "./assets/chewie.png";
-imgPlayer.onload = () => {
-  player = new Player(0, 0, 40, 72, "crimson", imgPlayer);
-};
 
-export { player };
+export const player = new Player(null, null, 40, 72, imgPlayer);
