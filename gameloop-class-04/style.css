@@ -27,10 +27,11 @@ canvas {
 }
 
 h1 {
-  width: 100%;
+  width: max-content;
   height: max-content;
   color: whitesmoke;
-  background-color: #0009;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
   text-align: center;
   padding: 32px;
   z-index: 999;
@@ -39,6 +40,6 @@ h1 {
 @media (max-width: 500px) {
   h1 {
     padding: 24px;
-    font-size: 24px;
+    font-size: 20px;
   }
 }

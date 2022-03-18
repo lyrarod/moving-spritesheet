@@ -1,6 +1,6 @@
 import Sprite from "./sprite.js";
 import { canvas } from "./gameloop.js";
-import { keypress } from "./keyboard.js";
+import { keypressed } from "./keyboard.js";
 
 class Bird extends Sprite {
   // arrayFrameX = [10, 9, 10, 11]; //DARK BIRD
@@ -33,32 +33,32 @@ class Bird extends Sprite {
     let speed = 3;
     let isMoving = true;
 
-    if (keypress.KeyA) {
+    if (keypressed.KeyA) {
       this.removeMessage();
       this.frameY = this.leftSide;
       this.x -= speed;
       if (this.x + this.width * this.scale <= 0) this.x = canvas.width;
     }
-    if (keypress.KeyD) {
+    if (keypressed.KeyD) {
       this.removeMessage();
       this.frameY = this.rightSide;
       this.x += speed;
       if (this.x >= canvas.width) this.x = -this.width * this.scale;
     }
-    if (keypress.KeyW) {
+    if (keypressed.KeyW) {
       this.removeMessage();
       this.frameY = this.upSide;
-      if (keypress.KeyA || keypress.KeyD) {
+      if (keypressed.KeyA || keypressed.KeyD) {
         speed = speed / 2;
         isMoving = false;
       }
       this.y -= speed;
       if (this.y + this.height * this.scale <= 0) this.y = canvas.height;
     }
-    if (keypress.KeyS) {
+    if (keypressed.KeyS) {
       this.removeMessage();
       this.frameY = this.downSide;
-      if (keypress.KeyA || keypress.KeyD) {
+      if (keypressed.KeyA || keypressed.KeyD) {
         speed = speed / 2;
         isMoving = false;
       }
